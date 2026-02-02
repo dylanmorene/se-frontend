@@ -1,0 +1,135 @@
+/* reuse identical styles as React for parity */
+:root{
+  --bg:#ecebe3;
+  --card:#fff;
+  --muted:#9a9a9a;
+  --accent:#2f7de1;
+  --sidebar-bg:#2f2c28;
+  --sidebar-accent:#efe4cc;
+  --card-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  --rounded:12px;
+}
+
+*{box-sizing:border-box;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+html,body,#app{height:100%;margin:0;background:var(--bg);}
+
+.app-root{
+  display:flex;
+  min-height:100vh;
+}
+
+/* Sidebar */
+.sidebar{
+  width:230px;
+  background:var(--sidebar-bg);
+  color:var(--sidebar-accent);
+  padding:28px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.brand{
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+.menu-title{
+  font-size:12px;
+  margin:8px 0;
+  color:rgba(255,255,255,0.6);
+}
+.menu{display:flex;flex-direction:column;gap:8px}
+.menu-item{
+  display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;color:var(--sidebar-accent);cursor:pointer;
+}
+.menu-item.active{background:var(--sidebar-accent);color:var(--sidebar-bg);font-weight:600}
+.menu-icon{width:28px;text-align:center;}
+
+/* Main content */
+.main-content{
+  flex:1;
+  padding:28px;
+}
+
+/* Grid layout */
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:20px;
+}
+
+/* Columns */
+.left-column{display:flex;flex-direction:column;gap:20px}
+.right-column{display:flex;flex-direction:column;gap:18px}
+
+/* Card */
+.card{
+  background:var(--card);
+  border-radius:var(--rounded);
+  padding:18px;
+  box-shadow:var(--card-shadow);
+  border:1px solid rgba(0,0,0,0.04);
+}
+.card-title{margin:0 0 10px 0;font-size:16px}
+
+/* Inventory list */
+.inventory-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px}
+.inventory-list li{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,0,0,0.05);padding-bottom:8px}
+.inv-value{font-weight:700}
+.inv-label{color:var(--muted)}
+
+/* Earnings */
+.earnings{display:flex;flex-direction:column;gap:8px}
+.earn-number{font-size:28px;font-weight:800}
+
+/* Analytics */
+.analytics{display:flex;gap:12px;align-items:center}
+.legend{flex:0 0 140px;font-size:13px;color:var(--muted)}
+.donut{width:80px;height:80px;border-radius:50%;background:conic-gradient(#2ecc71 0 40%, #27ae60 40% 70%, #95e06a 70% 90%, #d3d3d3 90%);}
+
+/* Availability */
+.availability-row{display:flex;gap:12px;align-items:center;margin-top:10px}
+select,input{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:#fff}
+.btn{padding:10px 12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:#f6f6f6}
+.btn.primary{background:var(--accent);color:#fff;border:none}
+.btn.small{padding:6px 8px;font-size:12px;margin-left:8px}
+
+/* Rentals table */
+.rentals-scroll{max-height:140px;overflow:auto;margin-top:10px}
+.rentals-table{width:100%;border-collapse:collapse}
+.rentals-table th{text-align:left;color:var(--muted);font-weight:600;padding:8px 6px;border-bottom:1px solid rgba(0,0,0,0.04)}
+.rentals-table td{padding:8px 6px;border-bottom:1px solid rgba(0,0,0,0.03)}
+.chip{display:inline-block;background:#f3f3f3;padding:6px 8px;border-radius:8px;font-size:12px}
+.status{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.status.completed{background:#2f7de1}
+
+/* Transactions */
+.transactions-scroll{max-height:180px;overflow:auto}
+.transactions-table{width:100%;border-collapse:collapse}
+.transactions-table th, .transactions-table td{padding:8px 6px;border-bottom:1px solid rgba(0,0,0,0.04);font-size:13px}
+/* Transactions - make scrollable + sticky header */
+.transactions-scroll{
+  max-height:240px; /* adjust height as needed */
+  overflow:auto;
+  margin-top:10px;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 8px;
+}
+
+.transactions-table thead th{
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  z-index: 2;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+}
+
+.transactions-table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout: fixed;
+}
+
+.transactions-scroll .transactions-table tbody tr:last-child td{
+  padding-bottom: 18px;
+}
